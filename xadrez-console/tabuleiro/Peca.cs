@@ -22,5 +22,7 @@ namespace xadrez_console.tabuleiro
             this.tab = tab;
             qteMovimento = 0;
         }
+
+      
     }
 }
