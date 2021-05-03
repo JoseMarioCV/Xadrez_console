@@ -10,14 +10,14 @@ namespace xadrez_console.tabuleiro
         public Tabuleiro tab  { get; protected set; }
 
         //Construtores:
-        public Peca()
+        public Peca(Tabuleiro tab, Cor cor)
         {
 
         }
 
-        public Peca(Posicao posicao, Cor cor, Tabuleiro tab)
+        public Peca( Cor cor, Tabuleiro tab)
         {
-            this.posicao = posicao;
+            this.posicao = null;
             this.cor = cor;
             this.tab = tab;
             qteMovimento = 0;
