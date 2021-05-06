@@ -17,20 +17,45 @@ namespace xadrez_console
 
                 for (int j = 0; j < tab.colunas; j++)
                 {
-                    if (tab.peca(i, j) == null)
-                    {
-                        Console.Write("- ");
-                    }
-                    else
-                    {
-                        imprimirPeca(tab.peca(i, j));
-                        Console.Write(" ");
-                    }
+                    imprimirPeca(tab.peca(i, j));
+                                 
                 }
                 Console.WriteLine();
             }
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write("  a b c d e f g h");
+            Console.ResetColor();
+        }
+
+        public static void imprimirTabuleiro(Tabuleiro tab, bool[,] posicoesPossiveis)
+        {
+            ConsoleColor fundoOriginal = Console.BackgroundColor;
+            ConsoleColor fundoAlterado = ConsoleColor.Green;
+
+
+            for (int i = 0; i < tab.linhas; i++)
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.Write(8 - i + " ");
+                Console.ResetColor();
+
+                for (int j = 0; j < tab.colunas; j++)
+                {
+                    if(posicoesPossiveis[i, j])
+                    {
+                        Console.BackgroundColor = fundoAlterado;
+                    }
+                    else
+                    {
+                        Console.BackgroundColor = fundoOriginal;
+                    }
+                    imprimirPeca(tab.peca(i, j));
+                    Console.ResetColor();
+                }
+                Console.WriteLine();
+            }
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("  a b c d e f g h");
             Console.ResetColor();
         }
 
@@ -60,7 +85,7 @@ namespace xadrez_console
                     Console.Write(peca);
                     Console.ForegroundColor = aux;
                 }
-                Console.Write("");
+                Console.Write(" ");
             }
         }
 
